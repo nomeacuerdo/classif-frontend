@@ -1,6 +1,7 @@
 "use client"
 
 import imageUrlBuilder from "@sanity/image-url";
+import Image from "next/image";
 import { client } from "@/sanity/client";
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { useState } from "react";
@@ -23,7 +24,7 @@ export default function ProductImages({ images, title }: ProductImagesProps) {
   return (
     <section className="lg:w-1/3 w-full flex flex-col items-center">
       {mainImage && (
-        <img
+        <Image
           src={urlFor(projectId, dataset, mainImage)?.fit("max").auto("format").url()}
           alt={title}
           className="rounded-2xl object-contain w-full h-[540px] bg-gray-100 border-4 border-black shadow-lg"
@@ -44,7 +45,7 @@ export default function ProductImages({ images, title }: ProductImagesProps) {
               }`}
               style={{ padding: 0 }}
             >
-              <img
+              <Image
                 src={urlFor(projectId, dataset, img)?.width(80).height(60).fit("crop").auto("format").url()}
                 alt={`Thumbnail ${idx + 1}`}
                 className="object-cover w-20 h-14 rounded-lg"

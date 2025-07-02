@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { type SanityDocument } from "next-sanity";
 import imageUrlBuilder from "@sanity/image-url";
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
@@ -21,7 +22,7 @@ const urlFor = (source: SanityImageSource) =>
 export default async function IndexPage() {
   const products = await client.fetch<SanityDocument[]>(PRODUCTS_QUERY, {}, options);
   const publishedProducts = products.filter((product) => product.published);
-console.log('xxx', products);
+
   return (
     <main className="container mx-auto min-h-screen p-8 flex flex-col gap-8 items-center py-10 mt-20">
       <ul className="flex flex-col items-center w-full gap-y-0">
@@ -42,7 +43,7 @@ console.log('xxx', products);
                 className="flex-shrink-0 h-full w-1/3 lg:w-[25%] flex items-center justify-center rounded-2xl overflow-hidden hover:text-violet-600 transition-colors"
               >
                 {productImageUrl ? (
-                  <img
+                  <Image
                     src={productImageUrl}
                     alt={product.title}
                     className="object-cover w-full h-full"

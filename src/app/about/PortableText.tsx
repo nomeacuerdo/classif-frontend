@@ -1,9 +1,10 @@
 import { PortableText } from '@portabletext/react'
 import { urlFor } from '../../sanity/client';
 import type { TypedObject } from '@portabletext/types';
+import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
 
 type ImageValue = {
-  asset?: any;
+  asset?: SanityImageSource;
   alt?: string;
 };
 
